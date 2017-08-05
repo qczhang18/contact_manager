@@ -41,3 +41,7 @@ group :production do
   gem 'rails_12factor'
   gem 'rack-attack'
 end
+
+group :test do
+  gem 'capybara'
+end
