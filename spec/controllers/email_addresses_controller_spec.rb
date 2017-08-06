@@ -28,8 +28,9 @@ RSpec.describe EmailAddressesController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # EmailAddress. As you add validations to EmailAddress, be sure to
   # adjust the attributes here as well.
+  person = FactoryGirl.create(:person)
   let(:valid_attributes) {
-    { address: "jonsnow@north.com" }
+    { address: "jonsnow@north.com", person_id: person }
   }
 
   let(:invalid_attributes) {
@@ -94,7 +95,7 @@ RSpec.describe EmailAddressesController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
+  describe "PUT #updae" do
     context "with valid params" do
       let(:new_attributes) {
         { address: 'kingofthenorth@westero.com' }
