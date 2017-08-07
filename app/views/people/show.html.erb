@@ -10,5 +10,11 @@
   <%= @person.last_name %>
 </p>
 
+<ul>
+  <% @person.email_addresses.each do |email| %>
+    <li><%= email.address %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
