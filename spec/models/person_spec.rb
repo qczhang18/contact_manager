@@ -23,4 +23,10 @@ RSpec.describe Person, type: :model do
     expect(person.email_addresses).to eq([])
   end
 
+  it 'has links to edit email address' do
+    person.email_addresses.each do |email|
+      expect(page).to have_link('edit', href: edit_email_address_path(email))
+    end
+  end
+
 end

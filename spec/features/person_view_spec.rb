@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "EmailAddresses", type: :feature do
-  let(:person) do
-    create(:person)
-  end
+RSpec.feature "Person View", type: :feature do
+  let(:person) { create(:person) }
 
   before(:each) do
     person.email_addresses.create(address: "qczhang18@gmail.com")
@@ -27,6 +25,12 @@ RSpec.feature "EmailAddresses", type: :feature do
     page.click_button('Create Email address')
     expect(current_path).to eq(person_path(person))
     expect(page).to have_content('demo@gmail.com')
+  end
+
+  it 'has links to edit email address' do
+    person.email_addresses.each do |email|
+      expect(page).to have_link('edit', href: edit_email_address_path(email))
+    end
   end
 
 end
