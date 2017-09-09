@@ -33,7 +33,7 @@ class EmailAddressesController < ApplicationController
   # PATCH/PUT /email_addresses/1
   def update
     if @email_address.update(email_address_params)
-      redirect_to @email_address, notice: 'Email address was successfully updated.'
+      redirect_to @email_address.person, notice: 'Email address was successfully updated.'
     else
       render :edit
     end
@@ -41,8 +41,9 @@ class EmailAddressesController < ApplicationController
 
   # DELETE /email_addresses/1
   def destroy
+    person=@email_address.person
     @email_address.destroy
-    redirect_to email_addresses_url, notice: 'Email address was successfully destroyed.'
+    redirect_to person_path, notice: 'Email address was successfully deleted.'
   end
 
   private
