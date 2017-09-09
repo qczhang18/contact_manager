@@ -41,9 +41,9 @@ class EmailAddressesController < ApplicationController
 
   # DELETE /email_addresses/1
   def destroy
-    person=@email_address.person
+    #person=@email_address.person
     @email_address.destroy
-    redirect_to person_path, notice: 'Email address was successfully deleted.'
+    redirect_to @email_address.person, notice: 'Email address was successfully deleted.'
   end
 
   private

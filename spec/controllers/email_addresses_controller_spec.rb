@@ -137,7 +137,7 @@ RSpec.describe EmailAddressesController, type: :controller do
     it "redirects to the person's view" do
       email_address = FactoryGirl.create(:email_address)
       delete :destroy, params: {id: email_address.to_param}, session: valid_session
-      expect(response).to redirect_to(person_path)
+      expect(response).to redirect_to(email_address.person)
     end
   end
 

@@ -50,4 +50,11 @@ RSpec.feature "Person View", type: :feature do
     end
   end
 
+  it 'deletes the email address' do
+    email = person.email_addresses.first
+    first(:link, 'delete').click
+    expect(current_path).to eq(person_path(person))
+    expect(page).to have_no_content(email.address)
+  end
+
 end
